@@ -15,24 +15,28 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(32);
   
   //movement range interaction
   if (mouseX < width / 2) {
   	startWidth = mouseX;
   	endWidth = width - mouseX;
-  	startHeight = mouseY;
-  	endHeight = height - mouseY;
   }
   else {
   	startWidth = width - mouseX;
   	endWidth = mouseX;
+  }
+  if (mouseY < height / 2) {
+  	startHeight = mouseY;
+  	endHeight = height - mouseY;
+  }
+  else {
   	startHeight = height - mouseY;
   	endHeight = mouseY;
   }
   
-  fill(32);
-  rect(startWidth, startHeight, endWidth - startWidth, endHeight - startHeight);
+  //fill(32);
+  //rect(startWidth, startHeight, endWidth - startWidth, endHeight - startHeight);
   
   //reset interaction
   if (mouseIsPressed) {
@@ -41,7 +45,7 @@ function draw() {
   	}
   }
   
-  //draw
+  //display system
   for (let i = 0; i < p.length; i++) {
     p[i].draw();
     p[i].update();
