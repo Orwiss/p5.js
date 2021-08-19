@@ -29,8 +29,8 @@ function draw() {
 
   if (mouseIsPressed) {
     for (let i = 0; i < p.length; i++) {
-      if (p[i].sh <= 120) {
-        p[i].sh ++; // spread
+      if (p[i].sh <= 480) {
+        p[i].sh += 3; // spread
       }
     }
   } else {
@@ -54,8 +54,8 @@ class Particle {
     this.d = random(2, 10);
     this.rx = random(10000);
     this.ry = random(10000);
-    this.sh = 30; // noise range
-    this.sp = 50; // moving speed
+    this.sh = 480; // noise range
+    this.sp = 30; // moving speed
   }
   
   update() {
