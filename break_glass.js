@@ -1,9 +1,7 @@
-let a, b, c, d, first
-let p = []
-let mouse
+let a, b, c, d, first, mouse, p = []
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(windowWidth, windowHeight);
   frameRate(30)
   
   a = createVector(width * 0.1, height * 0.1)
@@ -83,13 +81,14 @@ function mouseReleased() {
 class Polygon {
   constructor(points) {
     this.points = points
-    this.t = random(12, 48)
+    //this.c = color(random(255), random(255), random(255))
+    this.t = random(12, 96)
   }
   
   draw() {
-    if (mouseInPolygon(this.points)) fill(180, 72)
+    if (mouseInPolygon(this.points)) fill(180, 128)
     else fill(180, this.t)
-    stroke(64)
+    stroke(128)
     strokeWeight(0.5)
     
     beginShape()
@@ -103,11 +102,10 @@ class Polygon {
     let splitPoint = []
     
     for (let i = 0; i < this.points.length; i++) {
-      let m, n
+      let m, n, p = []
       m = this.points[i]
       n = (i == this.points.length - 1) ? this.points[0]:this.points[i + 1]
 
-      let p = []
       for (let j = 0; j < this.points.length + 1; j++) {
         let q = createVector(lerp(m.x, n.x, r[j]), lerp(m.y, n.y, r[j]))
         p.push(q)
