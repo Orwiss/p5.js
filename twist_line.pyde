@@ -9,9 +9,8 @@ def setup():
 def draw():
     background(255, 255, 245)
     
-    for i in range(len(r)):
-        r[i].update()
-        r[i].display() 
+    r[:].update()
+    r[:].display()
  
 def mouseReleased():
     if mouseButton == LEFT: r.append(Rope())
