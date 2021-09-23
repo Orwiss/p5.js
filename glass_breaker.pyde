@@ -1,3 +1,4 @@
+mouse = False
 p = []
 
 def setup():
@@ -14,7 +15,7 @@ def setup():
 
 def draw():
     background(0)
-    mouse = True if mousePressed and mouseButton == LEFT else False
+    global mouse
     
     for i in range(len(p)):
         p[i].display()
@@ -65,7 +66,11 @@ def getRandom(num):
     return r
 
 def mouseReleased():
-    if mouseButton == RIGHT: saveFrame('glass-breaker_####.png')
+    global mouse
+    if mouseButton == LEFT: mouse = True
+    else:
+        mouse = False
+        saveFrame('glass-breaker_####.png')
 
 class Polygon:
     def __init__(self, points):
