@@ -1,5 +1,5 @@
-mouse = False
 p = []
+mouse = False
 
 def setup():
     size(1000, 1000)
@@ -47,16 +47,14 @@ def mouseInPolygon(polygon):
     
     for i in range(len(polygon)):
         m = polygon[i]
-        if i == len(polygon) - 1: n = polygon[0]
-        else: n = polygon[i + 1]
+        n = polygon[0] if i == len(polygon) - 1 else polygon[i + 1]
         
         if (m.y > mouseY) != (n.y > mouseY):
             x = (((n.x - m.x) / (n.y - m.y) * (mouseY - m.y))) + m.x
             if mouseX < x:
                 c += 1
     
-    if c % 2 == 1: return True
-    else: return False
+    return True if c % 2 == 1 else False
 
 def getRandom(num):
     r = [0, 1]
@@ -69,8 +67,8 @@ def mouseReleased():
     global mouse
     if mouseButton == LEFT: mouse = True
     else:
-        mouse = False
         saveFrame('glass-breaker_####.png')
+        mouse = False
 
 class Polygon:
     def __init__(self, points):
@@ -93,8 +91,7 @@ class Polygon:
         for i in range(len(self.points)):
             p = []
             m = self.points[i]
-            if i == len(self.points) - 1: n = self.points[0]
-            else: n = self.points[i + 1]
+            n = self.points[0] if i == len(self.points) - 1 else self.points[i + 1]
             
             for j in range(len(self.points) + 1):
                 q = PVector(lerp(m.x, n.x, r[j]), lerp(m.y, n.y, r[j]))
