@@ -37,7 +37,7 @@ class Rope {
     let n = map(noise(this.n), 0, 1, -45, 675)
     let l = 4
     
-    if (p.x < width || p.y < height) {
+    if (this.p.length < 600) {
       this.p.push(createVector(p.x + cos(radians(n)) * l, p.y + sin(radians(n)) * l))
     }
     
